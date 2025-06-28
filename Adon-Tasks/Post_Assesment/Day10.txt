@@ -1,0 +1,49 @@
+mysql> create table customer (
+    -> customer_id int primary key,
+    -> customer_name varchar(50),
+    -> city varchar(30),
+    -> email varchar(50)
+);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc customer;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| customer_id   | int          | NO   | PRI | NULL    |       |
+| customer_name | varchar(50)  | YES  |     | NULL    |       |
+| city          | varchar(30)  | YES  |     | NULL    |       |
+| email         | varchar(50)  | YES  |     | NULL    |       |
++---------------+--------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> insert into customer values
+    -> (101, 'Danish k s', 'chennai', 'danishsakthi@gmail.com'),
+    -> (102, 'Mani r', 'coimbatore', 'manikandan@yahoo.com'),
+    -> (103, 'Nithish s', 'madurai', 'nithishgandhi@hotmail.com'),
+    -> (104, 'Harish l t', 'chennai', 'harishloganathan@gmail.com'),
+    -> (105, 'Vishnu j', 'salem', 'vishnuvasanth@outlook.com');
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from customer;
++-------------+---------------+-------------+----------------------------+
+| customer_id | customer_name | city        | email                      |
++-------------+---------------+-------------+----------------------------+
+|         101 | Danish k s    | chennai     | danishsakthi@gmail.com     |    
+|         102 | Mani r        | coimbatore  | manikandan@yahoo.com       |
+|         103 | Nithish s     | madurai     | nithishgandhi@hotmail.com  |   
+|         104 | Harish l t    | chennai     | harishloganathan@gmail.com |       
+|         105 | Vishnu j      | salem       | vishnuvasanth@outlook.com  |     
++-------------+---------------+-------------+----------------------------+
+5 rows in set (0.00 sec)
+
+mysql> -- filter customers from a specific city, input is expected in lowercase
+mysql> select * from customer where lower(city) = 'chennai';
++-------------+---------------+---------+-------------------------------+
+| customer_id | customer_name | city    | email                         |
++-------------+---------------+---------+-------------------------------+
+|         101 | Danish k s    | chennai | danishsakthi@gmail.com        |
+|         104 | Harish l t    | chennai | harishloganathan@gmail.com    |
++-------------+---------------+---------+-------------------------------+
+2 rows in set (0.00 sec)

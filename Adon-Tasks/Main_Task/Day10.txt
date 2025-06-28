@@ -1,0 +1,44 @@
+mysql> create table customer (
+    -> custid int primary key,
+    -> custname varchar(50),
+    -> age int,
+    -> city varchar(50),
+    -> amount_spent int
+    -> );
+query ok, 0 rows affected (0.01 sec)
+
+mysql> insert into customer values
+    -> (1, 'Danish', 28, 'chennai', 15000),
+    -> (2, 'Mani', 32, 'mumbai', 23000),
+    -> (3, 'Nithish', 24, 'bangalore', 12000),
+    -> (4, 'Harish', 30, 'chennai', 18000),
+    -> (5, 'Vishnu', 35, 'delhi', 25000);
+query ok, 5 rows affected (0.01 sec)
+
+mysql> select * from customer where city = 'chennai';
++--------+------------+-----+---------+--------------+
+| custid | custname   | age | city    | amount_spent |
++--------+------------+-----+---------+--------------+
+|      1 | Danish     |  28 | chennai |        15000 |
+|      4 | Harish     |  30 | chennai |        18000 |
++--------+------------+-----+---------+--------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from customer where age > 30;
++--------+----------+-----+--------+--------------+
+| custid | custname | age | city   | amount_spent |
++--------+----------+-----+--------+--------------+
+|      2 | Mani     |  32 | mumbai |        23000 |
+|      5 | Vishnu   |  35 | delhi  |        25000 |
++--------+----------+-----+--------+--------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from customer where amount_spent > 20000;
++--------+----------+-----+--------+--------------+
+| custid | custname | age | city   | amount_spent |
++--------+----------+-----+--------+--------------+
+|      2 | Mani     |  32 | mumbai |        23000 |
+|      5 | Vishnu   |  35 | delhi  |        25000 |
++--------+----------+-----+--------+--------------+
+2 rows in set (0.00 sec)
+

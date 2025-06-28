@@ -1,0 +1,41 @@
+mysql> create table customer (
+    -> custid int primary key,
+    -> custname varchar(50),
+    -> city varchar(50)
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create table orders (
+    -> orderid int primary key,
+    -> custid int,
+    -> product varchar(50),
+    -> amount int,
+    -> foreign key (custid) references customer(custid)
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> insert into customer values
+    -> (1, 'Danish', 'chennai'),
+    -> (2, 'Mani', 'mumbai'),
+    -> (3, 'Nithish', 'delhi');
+Query OK, 3 rows affected (0.01 sec)
+
+mysql> insert into orders values
+    -> (101, 1, 'CPU', 90000),
+    -> (102, 1, 'Monitor', 250000),
+    -> (103, 2, 'Graphics-Card', 350000),
+    -> (104, 3, 'keyboard & Mouse', 5000);
+Query OK, 4 rows affected (0.01 sec)
+
+mysql> select o.orderid, c.custname, c.city, o.product, o.amount
+    -> from orders o
+    -> join customer c on o.custid = c.custid;
++---------+----------+---------+----------+----------+
+| orderid | custname   | city    |  product | amount |
++---------+----------+---------+----------+----------+
+|     101 | Danish     | chennai | laptop   |  90000 |
+|     102 | Danish     | chennai | mouse    | 250000 |
+|     103 | Mani       | mumbai  | printer  | 350000 |
+|     104 | Nithish    | delhi   | keyboard |   5000 |
++---------+----------+---------+----------+----------+
+4 rows in set (0.00 sec)

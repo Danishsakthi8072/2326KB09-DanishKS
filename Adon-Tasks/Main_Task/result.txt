@@ -1,0 +1,4 @@
+Name,Total,Average
+Alice Johnson,240.0,80.00
+Jane Smith,259.0,86.33
+John Doe,253.0,84.33
